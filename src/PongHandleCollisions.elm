@@ -31,6 +31,18 @@ collisionBat batY side computer ball =
     (ballX >= batX - 8 && ballX <= batX + 8) && (ballY <= topBatY && ballY >= bottomBatY)
 
 
+decCollisionDelay ball =
+    let
+        currentCollisionDelay =
+            ball.collisionDelay
+    in
+    { ball | collisionDelay = currentCollisionDelay - 1 }
+
+
+outOfBoundaries ball computer =
+    first ball.coords < computer.screen.left + 5 || first ball.coords > computer.screen.right - 5
+
+
 reachTopBottom : ( Number, Number ) -> Number -> Number -> Number -> Bool
 reachTopBottom ballCoords top bottom speedY =
     let
