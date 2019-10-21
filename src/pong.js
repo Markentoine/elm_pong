@@ -4876,7 +4876,7 @@ var author$project$Pong$view = F2(
 				A2(
 					evancz$elm_playground$Playground$scale,
 					3,
-					A2(evancz$elm_playground$Playground$words, author$project$PongColors$orangeElm, 'ELM |> PONG')))
+					A2(evancz$elm_playground$Playground$words, author$project$PongColors$orangeElm, 'PONG = ELM GAME')))
 			]);
 	});
 var elm$core$Array$branchFactor = 32;

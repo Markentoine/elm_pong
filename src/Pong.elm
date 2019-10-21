@@ -35,11 +35,9 @@ view computer gameState =
         |> moveX (first gameState.ball.coords)
         |> moveY (second gameState.ball.coords)
         |> rotate (spin gameState.ball.spinSpeed computer.time)
-    , words orangeElm "ELM |> PONG"
+    , words orangeElm "PONG = ELM GAME"
         |> scale 3
         |> moveUp (computer.screen.top - 50)
-
-    --|> rotate (spin -0.8 computer.time)
     ]
 
 
