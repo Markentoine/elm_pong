@@ -47,12 +47,6 @@ view computer gameState =
 
 update computer gameState =
     let
-        currentYBat1 =
-            gameState.batY1
-
-        currentYBat2 =
-            gameState.batY2
-
         keys =
             computer.keyboard.keys
 
@@ -62,11 +56,11 @@ update computer gameState =
         bottom =
             computer.screen.bottom
 
-        newYBat1 =
-            futurePositionBat1 currentYBat1 keys top bottom
+        currentYBat1 =
+            gameState.batY1
 
-        newYBat2 =
-            futurePositionBat2 currentYBat2 computer.keyboard top bottom
+        currentYBat2 =
+            gameState.batY2
 
         speedBallY =
             ballSpeedY computer.screen.height
@@ -77,15 +71,28 @@ update computer gameState =
         ballInitialSpeed ball =
             { ball | speed = ( speedBallX, speedBallY ) }
 
+        newYBat1 =
+            futurePositionBat1 currentYBat1 keys top bottom
+
+        newYBat2 =
+            futurePositionBat2 currentYBat2 computer.keyboard top bottom
+
         newBall =
             updateBall gameState.ball computer newYBat1 newYBat2
                 |> futurePositionBall
     in
-    if first gameState.ball.speed == 0 then
-        { gameState | ball = ballInitialSpeed gameState.ball }
+    case gameState.state of
+        Start ->
+            { gameState | ball = ballInitialSpeed gameState.ball, state = Running }
 
-    else
-        { gameState | batY1 = newYBat1, batY2 = newYBat2, ball = newBall }
+        Running ->
+            { gameState | batY1 = newYBat1, batY2 = newYBat2, ball = newBall }
+
+        Pause ->
+            { gameState | batY1 = newYBat1, batY2 = newYBat2, ball = newBall }
+
+        End ->
+            { gameState | batY1 = newYBat1, batY2 = newYBat2, ball = newBall }
 
 
 
@@ -94,7 +101,8 @@ update computer gameState =
 
 initialGameState : GameState
 initialGameState =
-    { batY1 = 0
+    { state = Start
+    , batY1 = 0
     , batY2 = 0
     , ball =
         { coords = ( 0, 0 )

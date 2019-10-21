@@ -4,7 +4,8 @@ import Playground exposing (..)
 
 
 type alias GameState =
-    { batY1 : Number
+    { state : State
+    , batY1 : Number
     , batY2 : Number
     , ball : BallState
     }
@@ -21,3 +22,10 @@ type alias BallState =
 type BatSide
     = Left
     | Right
+
+
+type State
+    = Start
+    | Running
+    | Pause
+    | End

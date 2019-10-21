@@ -40,7 +40,7 @@ decCollisionDelay ball =
 
 
 outOfBoundaries ball computer =
-    first ball.coords < computer.screen.left + 5 || first ball.coords > computer.screen.right - 5
+    first ball.coords < computer.screen.left + 20 || first ball.coords > computer.screen.right - 20
 
 
 reachTopBottom : ( Number, Number ) -> Number -> Number -> Number -> Bool

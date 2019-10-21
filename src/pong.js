@@ -4310,6 +4310,7 @@ function _Browser_load(url)
 		}
 	}));
 }
+var author$project$PongTypes$Start = {$: 'Start'};
 var elm$core$Basics$negate = function (n) {
 	return -n;
 };
@@ -4401,7 +4402,8 @@ var author$project$Pong$initialGameState = {
 		spinSpeed: -0.8
 	},
 	batY1: 0,
-	batY2: 0
+	batY2: 0,
+	state: author$project$PongTypes$Start
 };
 var elm$core$Basics$fdiv = _Basics_fdiv;
 var elm$core$Basics$mul = _Basics_mul;
@@ -4452,7 +4454,7 @@ var elm$core$Basics$lt = _Utils_lt;
 var elm$core$Basics$or = _Basics_or;
 var author$project$PongHandleCollisions$outOfBoundaries = F2(
 	function (ball, computer) {
-		return (_Utils_cmp(ball.coords.a, computer.screen.left + 5) < 0) || (_Utils_cmp(ball.coords.a, computer.screen.right - 5) > 0);
+		return (_Utils_cmp(ball.coords.a, computer.screen.left + 20) < 0) || (_Utils_cmp(ball.coords.a, computer.screen.right - 20) > 0);
 	});
 var elm$core$Basics$False = {$: 'False'};
 var elm$core$Basics$True = {$: 'True'};
@@ -4489,7 +4491,8 @@ var author$project$PongBall$updateBall = F4(
 					return _Utils_update(
 						ball,
 						{
-							speed: _Utils_Tuple2(0, 0)
+							speed: _Utils_Tuple2(0, 0),
+							spinSpeed: 0
 						});
 				} else {
 					return newBall;
@@ -4567,11 +4570,11 @@ var author$project$PongPositions$futurePositionBat2 = F4(
 		var expectedBottomPosition = (currentPosition - 100) + evancz$elm_playground$Playground$toY(keyboard);
 		return (_Utils_cmp(expectedTopPosition, top) > 0) ? (top - 100) : ((_Utils_cmp(expectedBottomPosition, bottom) < 0) ? (bottom + 100) : (currentPosition + (evancz$elm_playground$Playground$toY(keyboard) * 15)));
 	});
+var author$project$PongTypes$Running = {$: 'Running'};
 var elm$core$Basics$apR = F2(
 	function (x, f) {
 		return f(x);
 	});
-var elm$core$Basics$eq = _Utils_equal;
 var author$project$Pong$update = F2(
 	function (computer, gameState) {
 		var top = computer.screen.top;
@@ -4592,13 +4595,28 @@ var author$project$Pong$update = F2(
 					speed: _Utils_Tuple2(speedBallX, speedBallY)
 				});
 		};
-		return (!gameState.ball.speed.a) ? _Utils_update(
-			gameState,
-			{
-				ball: ballInitialSpeed(gameState.ball)
-			}) : _Utils_update(
-			gameState,
-			{ball: newBall, batY1: newYBat1, batY2: newYBat2});
+		var _n0 = gameState.state;
+		switch (_n0.$) {
+			case 'Start':
+				return _Utils_update(
+					gameState,
+					{
+						ball: ballInitialSpeed(gameState.ball),
+						state: author$project$PongTypes$Running
+					});
+			case 'Running':
+				return _Utils_update(
+					gameState,
+					{ball: newBall, batY1: newYBat1, batY2: newYBat2});
+			case 'Pause':
+				return _Utils_update(
+					gameState,
+					{ball: newBall, batY1: newYBat1, batY2: newYBat2});
+			default:
+				return _Utils_update(
+					gameState,
+					{ball: newBall, batY1: newYBat1, batY2: newYBat2});
+		}
 	});
 var evancz$elm_playground$Playground$Rgb = F3(
 	function (a, b, c) {
@@ -4944,6 +4962,7 @@ var elm$core$Array$compressNodes = F2(
 			}
 		}
 	});
+var elm$core$Basics$eq = _Utils_equal;
 var elm$core$Array$treeFromBuilder = F2(
 	function (nodeList, nodeListSize) {
 		treeFromBuilder:
