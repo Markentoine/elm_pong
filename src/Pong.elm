@@ -23,10 +23,10 @@ main =
 view computer gameState =
     [ bat orangeElm
         |> moveX (computer.screen.left + 50)
-        |> moveY gameState.bat1
+        |> moveY gameState.batY1
     , bat green
         |> moveRight (computer.screen.right - 50)
-        |> moveY gameState.bat2
+        |> moveY gameState.batY2
     , ball
         |> moveX (first gameState.ball.coords)
         |> moveY (second gameState.ball.coords)
@@ -46,10 +46,10 @@ view computer gameState =
 update computer gameState =
     let
         currentYBat1 =
-            gameState.bat1
+            gameState.batY1
 
         currentYBat2 =
-            gameState.bat2
+            gameState.batY2
 
         keys =
             computer.keyboard.keys
@@ -83,7 +83,7 @@ update computer gameState =
         { gameState | ball = ballInitialSpeed gameState.ball }
 
     else
-        { gameState | bat1 = newYBat1, bat2 = newYBat2, ball = newBall }
+        { gameState | batY1 = newYBat1, batY2 = newYBat2, ball = newBall }
 
 
 
@@ -91,8 +91,8 @@ update computer gameState =
 
 
 type alias GameState =
-    { bat1 : Number
-    , bat2 : Number
+    { batY1 : Number
+    , batY2 : Number
     , ball : BallState
     }
 
@@ -105,10 +105,15 @@ type alias BallState =
     }
 
 
+type BatSide
+    = Left
+    | Right
+
+
 initialGameState : GameState
 initialGameState =
-    { bat1 = 0
-    , bat2 = 0
+    { batY1 = 0
+    , batY2 = 0
     , ball =
         { coords = ( 0, 0 )
         , speed = ( 0, 0 )
@@ -193,11 +198,16 @@ decCollisionDelay ball =
     { ball | collisionDelay = currentCollisionDelay - 1 }
 
 
-collisionBat1 : Number -> Computer -> BallState -> Bool
-collisionBat1 batY computer ball =
+collisionBat : Number -> BatSide -> Computer -> BallState -> Bool
+collisionBat batY side computer ball =
     let
         batX =
-            computer.screen.left + 50
+            case side of
+                Left ->
+                    computer.screen.left + 50
+
+                Right ->
+                    computer.screen.right - 50
 
         topBatY =
             batY + 100
@@ -214,28 +224,7 @@ collisionBat1 batY computer ball =
     (ballX >= batX - 8 && ballX <= batX + 8) && (ballY <= topBatY && ballY >= bottomBatY)
 
 
-collisionBat2 : Number -> Computer -> BallState -> Bool
-collisionBat2 batY computer ball =
-    let
-        batX =
-            computer.screen.right - 50
-
-        topBatY =
-            batY + 100
-
-        bottomBatY =
-            batY - 100
-
-        ballX =
-            first ball.coords
-
-        ballY =
-            second ball.coords
-    in
-    (ballX >= batX - 8 && ballX <= batX + 8) && (ballY <= topBatY && ballY >= bottomBatY)
-
-
-updateBall ball computer bat1 bat2 =
+updateBall ball computer batY1 batY2 =
     let
         top =
             computer.screen.top
@@ -252,9 +241,13 @@ updateBall ball computer bat1 bat2 =
     else if
         newBall.collisionDelay
             < 0
-            && (collisionBat1 bat1 computer ball || collisionBat2 bat2 computer ball)
+            && (collisionBat batY1 Left computer ball || collisionBat batY2 Right computer ball)
     then
-        { ball | speed = ( negate (first ball.speed), second ball.speed ), collisionDelay = 60 }
+        let
+            currentSpeedSpin =
+                ball.spinSpeed
+        in
+        { ball | speed = ( negate (first ball.speed), second ball.speed ), collisionDelay = 60, spinSpeed = negate currentSpeedSpin }
 
     else if outOfBoundaries ball computer then
         { ball | speed = ( 0, 0 ) }
@@ -278,12 +271,3 @@ futurePositionBall currentBall =
             )
     in
     { currentBall | coords = newPosition }
-
-
-
--- check top and bottom
--- if true then reverse y
--- check collision bat1 & bat2
--- if true reverse x
--- check if beyond bat1 or bat2
--- if true end game

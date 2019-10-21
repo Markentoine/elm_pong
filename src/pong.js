@@ -4400,8 +4400,8 @@ var author$project$Pong$initialGameState = {
 		speed: _Utils_Tuple2(0, 0),
 		spinSpeed: -0.8
 	},
-	bat1: 0,
-	bat2: 0
+	batY1: 0,
+	batY2: 0
 };
 var elm$core$Basics$fdiv = _Basics_fdiv;
 var elm$core$Basics$mul = _Basics_mul;
@@ -4497,23 +4497,22 @@ var author$project$Pong$futurePositionBat2 = F4(
 		var expectedBottomPosition = (currentPosition - 100) + evancz$elm_playground$Playground$toY(keyboard);
 		return (_Utils_cmp(expectedTopPosition, top) > 0) ? (top - 100) : ((_Utils_cmp(expectedBottomPosition, bottom) < 0) ? (bottom + 100) : (currentPosition + (evancz$elm_playground$Playground$toY(keyboard) * 15)));
 	});
+var author$project$Pong$Left = {$: 'Left'};
+var author$project$Pong$Right = {$: 'Right'};
 var elm$core$Basics$and = _Basics_and;
 var elm$core$Basics$ge = _Utils_ge;
 var elm$core$Basics$le = _Utils_le;
-var author$project$Pong$collisionBat1 = F3(
-	function (batY, computer, ball) {
+var author$project$Pong$collisionBat = F4(
+	function (batY, side, computer, ball) {
 		var topBatY = batY + 100;
 		var bottomBatY = batY - 100;
-		var batX = computer.screen.left + 50;
-		var ballY = ball.coords.b;
-		var ballX = ball.coords.a;
-		return ((_Utils_cmp(ballX, batX - 8) > -1) && (_Utils_cmp(ballX, batX + 8) < 1)) && ((_Utils_cmp(ballY, topBatY) < 1) && (_Utils_cmp(ballY, bottomBatY) > -1));
-	});
-var author$project$Pong$collisionBat2 = F3(
-	function (batY, computer, ball) {
-		var topBatY = batY + 100;
-		var bottomBatY = batY - 100;
-		var batX = computer.screen.right - 50;
+		var batX = function () {
+			if (side.$ === 'Left') {
+				return computer.screen.left + 50;
+			} else {
+				return computer.screen.right - 50;
+			}
+		}();
 		var ballY = ball.coords.b;
 		var ballX = ball.coords.a;
 		return ((_Utils_cmp(ballX, batX - 8) > -1) && (_Utils_cmp(ballX, batX + 8) < 1)) && ((_Utils_cmp(ballY, topBatY) < 1) && (_Utils_cmp(ballY, bottomBatY) > -1));
@@ -4535,24 +4534,38 @@ var author$project$Pong$reachTopBottom = F4(
 		return (_Utils_cmp(ballY, top) > -1) ? true : ((_Utils_cmp(ballY, bottom) < 1) ? true : false);
 	});
 var author$project$Pong$updateBall = F4(
-	function (ball, computer, bat1, bat2) {
+	function (ball, computer, batY1, batY2) {
 		var top = computer.screen.top;
 		var newBall = author$project$Pong$decCollisionDelay(ball);
 		var bottom = computer.screen.bottom;
-		return A4(author$project$Pong$reachTopBottom, ball.coords, top, bottom, ball.speed.b) ? _Utils_update(
-			ball,
-			{
-				speed: _Utils_Tuple2(ball.speed.a, -ball.speed.b)
-			}) : (((newBall.collisionDelay < 0) && (A3(author$project$Pong$collisionBat1, bat1, computer, ball) || A3(author$project$Pong$collisionBat2, bat2, computer, ball))) ? _Utils_update(
-			ball,
-			{
-				collisionDelay: 60,
-				speed: _Utils_Tuple2(-ball.speed.a, ball.speed.b)
-			}) : (A2(author$project$Pong$outOfBoundaries, ball, computer) ? _Utils_update(
-			ball,
-			{
-				speed: _Utils_Tuple2(0, 0)
-			}) : newBall));
+		if (A4(author$project$Pong$reachTopBottom, ball.coords, top, bottom, ball.speed.b)) {
+			return _Utils_update(
+				ball,
+				{
+					speed: _Utils_Tuple2(ball.speed.a, -ball.speed.b)
+				});
+		} else {
+			if ((newBall.collisionDelay < 0) && (A4(author$project$Pong$collisionBat, batY1, author$project$Pong$Left, computer, ball) || A4(author$project$Pong$collisionBat, batY2, author$project$Pong$Right, computer, ball))) {
+				var currentSpeedSpin = ball.spinSpeed;
+				return _Utils_update(
+					ball,
+					{
+						collisionDelay: 60,
+						speed: _Utils_Tuple2(-ball.speed.a, ball.speed.b),
+						spinSpeed: -currentSpeedSpin
+					});
+			} else {
+				if (A2(author$project$Pong$outOfBoundaries, ball, computer)) {
+					return _Utils_update(
+						ball,
+						{
+							speed: _Utils_Tuple2(0, 0)
+						});
+				} else {
+					return newBall;
+				}
+			}
+		}
 	});
 var elm$core$Basics$apR = F2(
 	function (x, f) {
@@ -4565,8 +4578,8 @@ var author$project$Pong$update = F2(
 		var speedBallY = author$project$Pong$ballSpeedY(computer.screen.height);
 		var speedBallX = author$project$Pong$ballSpeedX(computer.screen.width);
 		var keys = computer.keyboard.keys;
-		var currentYBat2 = gameState.bat2;
-		var currentYBat1 = gameState.bat1;
+		var currentYBat2 = gameState.batY2;
+		var currentYBat1 = gameState.batY1;
 		var bottom = computer.screen.bottom;
 		var newYBat1 = A4(author$project$Pong$futurePositionBat1, currentYBat1, keys, top, bottom);
 		var newYBat2 = A4(author$project$Pong$futurePositionBat2, currentYBat2, computer.keyboard, top, bottom);
@@ -4585,7 +4598,7 @@ var author$project$Pong$update = F2(
 				ball: ballInitialSpeed(gameState.ball)
 			}) : _Utils_update(
 			gameState,
-			{ball: newBall, bat1: newYBat1, bat2: newYBat2});
+			{ball: newBall, batY1: newYBat1, batY2: newYBat2});
 	});
 var evancz$elm_playground$Playground$Rgb = F3(
 	function (a, b, c) {
@@ -4838,14 +4851,14 @@ var author$project$Pong$view = F2(
 			[
 				A2(
 				evancz$elm_playground$Playground$moveY,
-				gameState.bat1,
+				gameState.batY1,
 				A2(
 					evancz$elm_playground$Playground$moveX,
 					computer.screen.left + 50,
 					author$project$PongAssets$bat(author$project$PongColors$orangeElm))),
 				A2(
 				evancz$elm_playground$Playground$moveY,
-				gameState.bat2,
+				gameState.batY2,
 				A2(
 					evancz$elm_playground$Playground$moveRight,
 					computer.screen.right - 50,
