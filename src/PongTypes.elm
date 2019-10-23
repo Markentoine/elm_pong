@@ -24,6 +24,11 @@ type BatSide
     | Right
 
 
+type Player
+    = Human
+    | Bot
+
+
 type State
     = Start
     | Running
