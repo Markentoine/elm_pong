@@ -1,6 +1,6 @@
 module PongPositions exposing (..)
 
-import Playground exposing (toY)
+import PongPlayground exposing (toY)
 import Set exposing (member)
 import Tuple exposing (first, second)
 

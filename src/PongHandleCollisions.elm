@@ -1,6 +1,6 @@
 module PongHandleCollisions exposing (..)
 
-import Playground exposing (..)
+import PongPlayground exposing (..)
 import PongTypes exposing (..)
 import Tuple exposing (first, second)
 

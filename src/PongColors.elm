@@ -1,6 +1,6 @@
 module PongColors exposing (..)
 
-import Playground exposing (..)
+import PongPlayground exposing (..)
 
 
 grisBleu =

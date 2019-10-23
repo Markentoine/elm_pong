@@ -1,6 +1,6 @@
 module PongTypes exposing (..)
 
-import Playground exposing (..)
+import PongPlayground exposing (..)
 
 
 type alias GameState =

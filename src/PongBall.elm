@@ -31,7 +31,7 @@ updateBall ball computer batY1 batY2 =
         { ball | speed = ( negate (first ball.speed), second ball.speed ), collisionDelay = 60, spinSpeed = negate currentSpeedSpin }
 
     else if outOfBoundaries ball computer then
-        { ball | speed = ( 0, 0 ) }
+        { ball | speed = ( 0, 0 ), spinSpeed = 0 }
 
     else
         newBall

@@ -4390,14 +4390,14 @@ var $elm$core$Set$toList = function (_v0) {
 var $elm$core$Basics$EQ = {$: 'EQ'};
 var $elm$core$Basics$GT = {$: 'GT'};
 var $elm$core$Basics$LT = {$: 'LT'};
-var $evancz$elm_playground$Playground$Game = F3(
+var $author$project$PongPlayground$Game = F3(
 	function (a, b, c) {
 		return {$: 'Game', a: a, b: b, c: c};
 	});
-var $evancz$elm_playground$Playground$GotViewport = function (a) {
+var $author$project$PongPlayground$GotViewport = function (a) {
 	return {$: 'GotViewport', a: a};
 };
-var $evancz$elm_playground$Playground$VisibilityChanged = function (a) {
+var $author$project$PongPlayground$VisibilityChanged = function (a) {
 	return {$: 'VisibilityChanged', a: a};
 };
 var $elm$browser$Browser$Events$Visible = {$: 'Visible'};
@@ -5110,23 +5110,23 @@ var $elm$core$Task$perform = F2(
 				A2($elm$core$Task$map, toMessage, task)));
 	});
 var $elm$browser$Browser$document = _Browser_document;
-var $evancz$elm_playground$Playground$KeyChanged = F2(
+var $author$project$PongPlayground$KeyChanged = F2(
 	function (a, b) {
 		return {$: 'KeyChanged', a: a, b: b};
 	});
-var $evancz$elm_playground$Playground$MouseButton = function (a) {
+var $author$project$PongPlayground$MouseButton = function (a) {
 	return {$: 'MouseButton', a: a};
 };
-var $evancz$elm_playground$Playground$MouseClick = {$: 'MouseClick'};
-var $evancz$elm_playground$Playground$MouseMove = F2(
+var $author$project$PongPlayground$MouseClick = {$: 'MouseClick'};
+var $author$project$PongPlayground$MouseMove = F2(
 	function (a, b) {
 		return {$: 'MouseMove', a: a, b: b};
 	});
-var $evancz$elm_playground$Playground$Resized = F2(
+var $author$project$PongPlayground$Resized = F2(
 	function (a, b) {
 		return {$: 'Resized', a: a, b: b};
 	});
-var $evancz$elm_playground$Playground$Tick = function (a) {
+var $author$project$PongPlayground$Tick = function (a) {
 	return {$: 'Tick', a: a};
 };
 var $elm$core$Platform$Sub$batch = _Platform_batch;
@@ -5708,62 +5708,62 @@ var $elm$browser$Browser$Events$onVisibilityChange = function (func) {
 				A2($elm$json$Json$Decode$field, info.hidden, $elm$json$Json$Decode$bool))));
 };
 var $elm$json$Json$Decode$string = _Json_decodeString;
-var $evancz$elm_playground$Playground$gameSubscriptions = $elm$core$Platform$Sub$batch(
+var $author$project$PongPlayground$gameSubscriptions = $elm$core$Platform$Sub$batch(
 	_List_fromArray(
 		[
-			$elm$browser$Browser$Events$onResize($evancz$elm_playground$Playground$Resized),
+			$elm$browser$Browser$Events$onResize($author$project$PongPlayground$Resized),
 			$elm$browser$Browser$Events$onKeyUp(
 			A2(
 				$elm$json$Json$Decode$map,
-				$evancz$elm_playground$Playground$KeyChanged(false),
+				$author$project$PongPlayground$KeyChanged(false),
 				A2($elm$json$Json$Decode$field, 'key', $elm$json$Json$Decode$string))),
 			$elm$browser$Browser$Events$onKeyDown(
 			A2(
 				$elm$json$Json$Decode$map,
-				$evancz$elm_playground$Playground$KeyChanged(true),
+				$author$project$PongPlayground$KeyChanged(true),
 				A2($elm$json$Json$Decode$field, 'key', $elm$json$Json$Decode$string))),
-			$elm$browser$Browser$Events$onAnimationFrame($evancz$elm_playground$Playground$Tick),
-			$elm$browser$Browser$Events$onVisibilityChange($evancz$elm_playground$Playground$VisibilityChanged),
+			$elm$browser$Browser$Events$onAnimationFrame($author$project$PongPlayground$Tick),
+			$elm$browser$Browser$Events$onVisibilityChange($author$project$PongPlayground$VisibilityChanged),
 			$elm$browser$Browser$Events$onClick(
-			$elm$json$Json$Decode$succeed($evancz$elm_playground$Playground$MouseClick)),
+			$elm$json$Json$Decode$succeed($author$project$PongPlayground$MouseClick)),
 			$elm$browser$Browser$Events$onMouseDown(
 			$elm$json$Json$Decode$succeed(
-				$evancz$elm_playground$Playground$MouseButton(true))),
+				$author$project$PongPlayground$MouseButton(true))),
 			$elm$browser$Browser$Events$onMouseUp(
 			$elm$json$Json$Decode$succeed(
-				$evancz$elm_playground$Playground$MouseButton(false))),
+				$author$project$PongPlayground$MouseButton(false))),
 			$elm$browser$Browser$Events$onMouseMove(
 			A3(
 				$elm$json$Json$Decode$map2,
-				$evancz$elm_playground$Playground$MouseMove,
+				$author$project$PongPlayground$MouseMove,
 				A2($elm$json$Json$Decode$field, 'pageX', $elm$json$Json$Decode$float),
 				A2($elm$json$Json$Decode$field, 'pageY', $elm$json$Json$Decode$float)))
 		]));
-var $evancz$elm_playground$Playground$Mouse = F4(
+var $author$project$PongPlayground$Mouse = F4(
 	function (x, y, down, click) {
 		return {click: click, down: down, x: x, y: y};
 	});
-var $evancz$elm_playground$Playground$Time = function (a) {
+var $author$project$PongPlayground$Time = function (a) {
 	return {$: 'Time', a: a};
 };
 var $elm$core$Set$Set_elm_builtin = function (a) {
 	return {$: 'Set_elm_builtin', a: a};
 };
 var $elm$core$Set$empty = $elm$core$Set$Set_elm_builtin($elm$core$Dict$empty);
-var $evancz$elm_playground$Playground$emptyKeyboard = {backspace: false, down: false, enter: false, keys: $elm$core$Set$empty, left: false, right: false, shift: false, space: false, up: false};
-var $evancz$elm_playground$Playground$mouseClick = F2(
+var $author$project$PongPlayground$emptyKeyboard = {backspace: false, down: false, enter: false, keys: $elm$core$Set$empty, left: false, right: false, shift: false, space: false, up: false};
+var $author$project$PongPlayground$mouseClick = F2(
 	function (bool, mouse) {
 		return _Utils_update(
 			mouse,
 			{click: bool});
 	});
-var $evancz$elm_playground$Playground$mouseDown = F2(
+var $author$project$PongPlayground$mouseDown = F2(
 	function (bool, mouse) {
 		return _Utils_update(
 			mouse,
 			{down: bool});
 	});
-var $evancz$elm_playground$Playground$mouseMove = F3(
+var $author$project$PongPlayground$mouseMove = F3(
 	function (x, y, mouse) {
 		return _Utils_update(
 			mouse,
@@ -5772,7 +5772,7 @@ var $evancz$elm_playground$Playground$mouseMove = F3(
 var $elm$core$Basics$negate = function (n) {
 	return -n;
 };
-var $evancz$elm_playground$Playground$toScreen = F2(
+var $author$project$PongPlayground$toScreen = F2(
 	function (width, height) {
 		return {bottom: (-height) / 2, height: height, left: (-width) / 2, right: width / 2, top: height / 2, width: width};
 	});
@@ -6150,7 +6150,7 @@ var $elm$core$Set$remove = F2(
 		return $elm$core$Set$Set_elm_builtin(
 			A2($elm$core$Dict$remove, key, dict));
 	});
-var $evancz$elm_playground$Playground$updateKeyboard = F3(
+var $author$project$PongPlayground$updateKeyboard = F3(
 	function (isDown, key, keyboard) {
 		var keys = isDown ? A2($elm$core$Set$insert, key, keyboard.keys) : A2($elm$core$Set$remove, key, keyboard.keys);
 		switch (key) {
@@ -6192,7 +6192,7 @@ var $evancz$elm_playground$Playground$updateKeyboard = F3(
 					{keys: keys});
 		}
 	});
-var $evancz$elm_playground$Playground$gameUpdate = F3(
+var $author$project$PongPlayground$gameUpdate = F3(
 	function (updateMemory, msg, _v0) {
 		var vis = _v0.a;
 		var memory = _v0.b;
@@ -6201,53 +6201,53 @@ var $evancz$elm_playground$Playground$gameUpdate = F3(
 			case 'Tick':
 				var time = msg.a;
 				return A3(
-					$evancz$elm_playground$Playground$Game,
+					$author$project$PongPlayground$Game,
 					vis,
 					A2(updateMemory, computer, memory),
 					computer.mouse.click ? _Utils_update(
 						computer,
 						{
-							mouse: A2($evancz$elm_playground$Playground$mouseClick, false, computer.mouse),
-							time: $evancz$elm_playground$Playground$Time(time)
+							mouse: A2($author$project$PongPlayground$mouseClick, false, computer.mouse),
+							time: $author$project$PongPlayground$Time(time)
 						}) : _Utils_update(
 						computer,
 						{
-							time: $evancz$elm_playground$Playground$Time(time)
+							time: $author$project$PongPlayground$Time(time)
 						}));
 			case 'GotViewport':
 				var viewport = msg.a.viewport;
 				return A3(
-					$evancz$elm_playground$Playground$Game,
+					$author$project$PongPlayground$Game,
 					vis,
 					memory,
 					_Utils_update(
 						computer,
 						{
-							screen: A2($evancz$elm_playground$Playground$toScreen, viewport.width, viewport.height)
+							screen: A2($author$project$PongPlayground$toScreen, viewport.width, viewport.height)
 						}));
 			case 'Resized':
 				var w = msg.a;
 				var h = msg.b;
 				return A3(
-					$evancz$elm_playground$Playground$Game,
+					$author$project$PongPlayground$Game,
 					vis,
 					memory,
 					_Utils_update(
 						computer,
 						{
-							screen: A2($evancz$elm_playground$Playground$toScreen, w, h)
+							screen: A2($author$project$PongPlayground$toScreen, w, h)
 						}));
 			case 'KeyChanged':
 				var isDown = msg.a;
 				var key = msg.b;
 				return A3(
-					$evancz$elm_playground$Playground$Game,
+					$author$project$PongPlayground$Game,
 					vis,
 					memory,
 					_Utils_update(
 						computer,
 						{
-							keyboard: A3($evancz$elm_playground$Playground$updateKeyboard, isDown, key, computer.keyboard)
+							keyboard: A3($author$project$PongPlayground$updateKeyboard, isDown, key, computer.keyboard)
 						}));
 			case 'MouseMove':
 				var pageX = msg.a;
@@ -6255,55 +6255,55 @@ var $evancz$elm_playground$Playground$gameUpdate = F3(
 				var y = computer.screen.top - pageY;
 				var x = computer.screen.left + pageX;
 				return A3(
-					$evancz$elm_playground$Playground$Game,
+					$author$project$PongPlayground$Game,
 					vis,
 					memory,
 					_Utils_update(
 						computer,
 						{
-							mouse: A3($evancz$elm_playground$Playground$mouseMove, x, y, computer.mouse)
+							mouse: A3($author$project$PongPlayground$mouseMove, x, y, computer.mouse)
 						}));
 			case 'MouseClick':
 				return A3(
-					$evancz$elm_playground$Playground$Game,
+					$author$project$PongPlayground$Game,
 					vis,
 					memory,
 					_Utils_update(
 						computer,
 						{
-							mouse: A2($evancz$elm_playground$Playground$mouseClick, true, computer.mouse)
+							mouse: A2($author$project$PongPlayground$mouseClick, true, computer.mouse)
 						}));
 			case 'MouseButton':
 				var isDown = msg.a;
 				return A3(
-					$evancz$elm_playground$Playground$Game,
+					$author$project$PongPlayground$Game,
 					vis,
 					memory,
 					_Utils_update(
 						computer,
 						{
-							mouse: A2($evancz$elm_playground$Playground$mouseDown, isDown, computer.mouse)
+							mouse: A2($author$project$PongPlayground$mouseDown, isDown, computer.mouse)
 						}));
 			default:
 				var visibility = msg.a;
 				return A3(
-					$evancz$elm_playground$Playground$Game,
+					$author$project$PongPlayground$Game,
 					visibility,
 					memory,
 					_Utils_update(
 						computer,
 						{
-							keyboard: $evancz$elm_playground$Playground$emptyKeyboard,
-							mouse: A4($evancz$elm_playground$Playground$Mouse, computer.mouse.x, computer.mouse.y, false, false)
+							keyboard: $author$project$PongPlayground$emptyKeyboard,
+							mouse: A4($author$project$PongPlayground$Mouse, computer.mouse.x, computer.mouse.y, false, false)
 						}));
 		}
 	});
 var $elm$browser$Browser$Dom$getViewport = _Browser_withWindow(_Browser_getViewport);
-var $evancz$elm_playground$Playground$initialComputer = {
-	keyboard: $evancz$elm_playground$Playground$emptyKeyboard,
-	mouse: A4($evancz$elm_playground$Playground$Mouse, 0, 0, false, false),
-	screen: A2($evancz$elm_playground$Playground$toScreen, 600, 600),
-	time: $evancz$elm_playground$Playground$Time(
+var $author$project$PongPlayground$initialComputer = {
+	keyboard: $author$project$PongPlayground$emptyKeyboard,
+	mouse: A4($author$project$PongPlayground$Mouse, 0, 0, false, false),
+	screen: A2($author$project$PongPlayground$toScreen, 600, 600),
+	time: $author$project$PongPlayground$Time(
 		$elm$time$Time$millisToPosix(0))
 };
 var $elm$core$Platform$Cmd$batch = _Platform_batch;
@@ -6317,7 +6317,7 @@ var $elm$core$Basics$clamp = F3(
 		return (_Utils_cmp(number, low) < 0) ? low : ((_Utils_cmp(number, high) > 0) ? high : number);
 	});
 var $elm$svg$Svg$Attributes$opacity = _VirtualDom_attribute('opacity');
-var $evancz$elm_playground$Playground$renderAlpha = function (alpha) {
+var $author$project$PongPlayground$renderAlpha = function (alpha) {
 	return (alpha === 1) ? _List_Nil : _List_fromArray(
 		[
 			$elm$svg$Svg$Attributes$opacity(
@@ -6328,7 +6328,7 @@ var $evancz$elm_playground$Playground$renderAlpha = function (alpha) {
 var $elm$svg$Svg$circle = $elm$svg$Svg$trustedNode('circle');
 var $elm$svg$Svg$Attributes$fill = _VirtualDom_attribute('fill');
 var $elm$svg$Svg$Attributes$r = _VirtualDom_attribute('r');
-var $evancz$elm_playground$Playground$renderColor = function (color) {
+var $author$project$PongPlayground$renderColor = function (color) {
 	if (color.$ === 'Hex') {
 		var str = color.a;
 		return str;
@@ -6339,12 +6339,12 @@ var $evancz$elm_playground$Playground$renderColor = function (color) {
 		return 'rgb(' + ($elm$core$String$fromInt(r) + (',' + ($elm$core$String$fromInt(g) + (',' + ($elm$core$String$fromInt(b) + ')')))));
 	}
 };
-var $evancz$elm_playground$Playground$renderTransform = F4(
+var $author$project$PongPlayground$renderTransform = F4(
 	function (x, y, a, s) {
 		return (!a) ? ((s === 1) ? ('translate(' + ($elm$core$String$fromFloat(x) + (',' + ($elm$core$String$fromFloat(-y) + ')')))) : ('translate(' + ($elm$core$String$fromFloat(x) + (',' + ($elm$core$String$fromFloat(-y) + (') scale(' + ($elm$core$String$fromFloat(s) + ')'))))))) : ((s === 1) ? ('translate(' + ($elm$core$String$fromFloat(x) + (',' + ($elm$core$String$fromFloat(-y) + (') rotate(' + ($elm$core$String$fromFloat(-a) + ')')))))) : ('translate(' + ($elm$core$String$fromFloat(x) + (',' + ($elm$core$String$fromFloat(-y) + (') rotate(' + ($elm$core$String$fromFloat(-a) + (') scale(' + ($elm$core$String$fromFloat(s) + ')')))))))));
 	});
 var $elm$svg$Svg$Attributes$transform = _VirtualDom_attribute('transform');
-var $evancz$elm_playground$Playground$renderCircle = F7(
+var $author$project$PongPlayground$renderCircle = F7(
 	function (color, radius, x, y, angle, s, alpha) {
 		return A2(
 			$elm$svg$Svg$circle,
@@ -6355,18 +6355,18 @@ var $evancz$elm_playground$Playground$renderCircle = F7(
 				A2(
 					$elm$core$List$cons,
 					$elm$svg$Svg$Attributes$fill(
-						$evancz$elm_playground$Playground$renderColor(color)),
+						$author$project$PongPlayground$renderColor(color)),
 					A2(
 						$elm$core$List$cons,
 						$elm$svg$Svg$Attributes$transform(
-							A4($evancz$elm_playground$Playground$renderTransform, x, y, angle, s)),
-						$evancz$elm_playground$Playground$renderAlpha(alpha)))),
+							A4($author$project$PongPlayground$renderTransform, x, y, angle, s)),
+						$author$project$PongPlayground$renderAlpha(alpha)))),
 			_List_Nil);
 	});
 var $elm$svg$Svg$image = $elm$svg$Svg$trustedNode('image');
-var $evancz$elm_playground$Playground$renderRectTransform = F6(
+var $author$project$PongPlayground$renderRectTransform = F6(
 	function (width, height, x, y, angle, s) {
-		return A4($evancz$elm_playground$Playground$renderTransform, x, y, angle, s) + (' translate(' + ($elm$core$String$fromFloat((-width) / 2) + (',' + ($elm$core$String$fromFloat((-height) / 2) + ')'))));
+		return A4($author$project$PongPlayground$renderTransform, x, y, angle, s) + (' translate(' + ($elm$core$String$fromFloat((-width) / 2) + (',' + ($elm$core$String$fromFloat((-height) / 2) + ')'))));
 	});
 var $elm$svg$Svg$Attributes$width = _VirtualDom_attribute('width');
 var $elm$svg$Svg$Attributes$xlinkHref = function (value) {
@@ -6376,7 +6376,7 @@ var $elm$svg$Svg$Attributes$xlinkHref = function (value) {
 		'xlink:href',
 		_VirtualDom_noJavaScriptUri(value));
 };
-var $evancz$elm_playground$Playground$renderImage = F8(
+var $author$project$PongPlayground$renderImage = F8(
 	function (w, h, src, x, y, angle, s, alpha) {
 		return A2(
 			$elm$svg$Svg$image,
@@ -6394,8 +6394,8 @@ var $evancz$elm_playground$Playground$renderImage = F8(
 						A2(
 							$elm$core$List$cons,
 							$elm$svg$Svg$Attributes$transform(
-								A6($evancz$elm_playground$Playground$renderRectTransform, w, h, x, y, angle, s)),
-							$evancz$elm_playground$Playground$renderAlpha(alpha))))),
+								A6($author$project$PongPlayground$renderRectTransform, w, h, x, y, angle, s)),
+							$author$project$PongPlayground$renderAlpha(alpha))))),
 			_List_Nil);
 	});
 var $elm$svg$Svg$Attributes$points = _VirtualDom_attribute('points');
@@ -6406,7 +6406,7 @@ var $elm$core$Basics$pi = _Basics_pi;
 var $elm$core$Basics$turns = function (angleInTurns) {
 	return (2 * $elm$core$Basics$pi) * angleInTurns;
 };
-var $evancz$elm_playground$Playground$toNgonPoints = F4(
+var $author$project$PongPlayground$toNgonPoints = F4(
 	function (i, n, radius, string) {
 		toNgonPoints:
 		while (true) {
@@ -6428,29 +6428,29 @@ var $evancz$elm_playground$Playground$toNgonPoints = F4(
 			}
 		}
 	});
-var $evancz$elm_playground$Playground$renderNgon = F8(
+var $author$project$PongPlayground$renderNgon = F8(
 	function (color, n, radius, x, y, angle, s, alpha) {
 		return A2(
 			$elm$svg$Svg$polygon,
 			A2(
 				$elm$core$List$cons,
 				$elm$svg$Svg$Attributes$points(
-					A4($evancz$elm_playground$Playground$toNgonPoints, 0, n, radius, '')),
+					A4($author$project$PongPlayground$toNgonPoints, 0, n, radius, '')),
 				A2(
 					$elm$core$List$cons,
 					$elm$svg$Svg$Attributes$fill(
-						$evancz$elm_playground$Playground$renderColor(color)),
+						$author$project$PongPlayground$renderColor(color)),
 					A2(
 						$elm$core$List$cons,
 						$elm$svg$Svg$Attributes$transform(
-							A4($evancz$elm_playground$Playground$renderTransform, x, y, angle, s)),
-						$evancz$elm_playground$Playground$renderAlpha(alpha)))),
+							A4($author$project$PongPlayground$renderTransform, x, y, angle, s)),
+						$author$project$PongPlayground$renderAlpha(alpha)))),
 			_List_Nil);
 	});
 var $elm$svg$Svg$ellipse = $elm$svg$Svg$trustedNode('ellipse');
 var $elm$svg$Svg$Attributes$rx = _VirtualDom_attribute('rx');
 var $elm$svg$Svg$Attributes$ry = _VirtualDom_attribute('ry');
-var $evancz$elm_playground$Playground$renderOval = F8(
+var $author$project$PongPlayground$renderOval = F8(
 	function (color, width, height, x, y, angle, s, alpha) {
 		return A2(
 			$elm$svg$Svg$ellipse,
@@ -6465,41 +6465,41 @@ var $evancz$elm_playground$Playground$renderOval = F8(
 					A2(
 						$elm$core$List$cons,
 						$elm$svg$Svg$Attributes$fill(
-							$evancz$elm_playground$Playground$renderColor(color)),
+							$author$project$PongPlayground$renderColor(color)),
 						A2(
 							$elm$core$List$cons,
 							$elm$svg$Svg$Attributes$transform(
-								A4($evancz$elm_playground$Playground$renderTransform, x, y, angle, s)),
-							$evancz$elm_playground$Playground$renderAlpha(alpha))))),
+								A4($author$project$PongPlayground$renderTransform, x, y, angle, s)),
+							$author$project$PongPlayground$renderAlpha(alpha))))),
 			_List_Nil);
 	});
-var $evancz$elm_playground$Playground$addPoint = F2(
+var $author$project$PongPlayground$addPoint = F2(
 	function (_v0, str) {
 		var x = _v0.a;
 		var y = _v0.b;
 		return str + ($elm$core$String$fromFloat(x) + (',' + ($elm$core$String$fromFloat(y) + ' ')));
 	});
-var $evancz$elm_playground$Playground$renderPolygon = F7(
+var $author$project$PongPlayground$renderPolygon = F7(
 	function (color, coordinates, x, y, angle, s, alpha) {
 		return A2(
 			$elm$svg$Svg$polygon,
 			A2(
 				$elm$core$List$cons,
 				$elm$svg$Svg$Attributes$points(
-					A3($elm$core$List$foldl, $evancz$elm_playground$Playground$addPoint, '', coordinates)),
+					A3($elm$core$List$foldl, $author$project$PongPlayground$addPoint, '', coordinates)),
 				A2(
 					$elm$core$List$cons,
 					$elm$svg$Svg$Attributes$fill(
-						$evancz$elm_playground$Playground$renderColor(color)),
+						$author$project$PongPlayground$renderColor(color)),
 					A2(
 						$elm$core$List$cons,
 						$elm$svg$Svg$Attributes$transform(
-							A4($evancz$elm_playground$Playground$renderTransform, x, y, angle, s)),
-						$evancz$elm_playground$Playground$renderAlpha(alpha)))),
+							A4($author$project$PongPlayground$renderTransform, x, y, angle, s)),
+						$author$project$PongPlayground$renderAlpha(alpha)))),
 			_List_Nil);
 	});
 var $elm$svg$Svg$rect = $elm$svg$Svg$trustedNode('rect');
-var $evancz$elm_playground$Playground$renderRectangle = F8(
+var $author$project$PongPlayground$renderRectangle = F8(
 	function (color, w, h, x, y, angle, s, alpha) {
 		return A2(
 			$elm$svg$Svg$rect,
@@ -6514,12 +6514,12 @@ var $evancz$elm_playground$Playground$renderRectangle = F8(
 					A2(
 						$elm$core$List$cons,
 						$elm$svg$Svg$Attributes$fill(
-							$evancz$elm_playground$Playground$renderColor(color)),
+							$author$project$PongPlayground$renderColor(color)),
 						A2(
 							$elm$core$List$cons,
 							$elm$svg$Svg$Attributes$transform(
-								A6($evancz$elm_playground$Playground$renderRectTransform, w, h, x, y, angle, s)),
-							$evancz$elm_playground$Playground$renderAlpha(alpha))))),
+								A6($author$project$PongPlayground$renderRectTransform, w, h, x, y, angle, s)),
+							$author$project$PongPlayground$renderAlpha(alpha))))),
 			_List_Nil);
 	});
 var $elm$svg$Svg$Attributes$dominantBaseline = _VirtualDom_attribute('dominant-baseline');
@@ -6527,7 +6527,7 @@ var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$svg$Svg$text = $elm$virtual_dom$VirtualDom$text;
 var $elm$svg$Svg$Attributes$textAnchor = _VirtualDom_attribute('text-anchor');
 var $elm$svg$Svg$text_ = $elm$svg$Svg$trustedNode('text');
-var $evancz$elm_playground$Playground$renderWords = F7(
+var $author$project$PongPlayground$renderWords = F7(
 	function (color, string, x, y, angle, s, alpha) {
 		return A2(
 			$elm$svg$Svg$text_,
@@ -6540,18 +6540,18 @@ var $evancz$elm_playground$Playground$renderWords = F7(
 					A2(
 						$elm$core$List$cons,
 						$elm$svg$Svg$Attributes$fill(
-							$evancz$elm_playground$Playground$renderColor(color)),
+							$author$project$PongPlayground$renderColor(color)),
 						A2(
 							$elm$core$List$cons,
 							$elm$svg$Svg$Attributes$transform(
-								A4($evancz$elm_playground$Playground$renderTransform, x, y, angle, s)),
-							$evancz$elm_playground$Playground$renderAlpha(alpha))))),
+								A4($author$project$PongPlayground$renderTransform, x, y, angle, s)),
+							$author$project$PongPlayground$renderAlpha(alpha))))),
 			_List_fromArray(
 				[
 					$elm$svg$Svg$text(string)
 				]));
 	});
-var $evancz$elm_playground$Playground$renderShape = function (_v0) {
+var $author$project$PongPlayground$renderShape = function (_v0) {
 	var x = _v0.a;
 	var y = _v0.b;
 	var angle = _v0.c;
@@ -6562,35 +6562,35 @@ var $evancz$elm_playground$Playground$renderShape = function (_v0) {
 		case 'Circle':
 			var color = form.a;
 			var radius = form.b;
-			return A7($evancz$elm_playground$Playground$renderCircle, color, radius, x, y, angle, s, alpha);
+			return A7($author$project$PongPlayground$renderCircle, color, radius, x, y, angle, s, alpha);
 		case 'Oval':
 			var color = form.a;
 			var width = form.b;
 			var height = form.c;
-			return A8($evancz$elm_playground$Playground$renderOval, color, width, height, x, y, angle, s, alpha);
+			return A8($author$project$PongPlayground$renderOval, color, width, height, x, y, angle, s, alpha);
 		case 'Rectangle':
 			var color = form.a;
 			var width = form.b;
 			var height = form.c;
-			return A8($evancz$elm_playground$Playground$renderRectangle, color, width, height, x, y, angle, s, alpha);
+			return A8($author$project$PongPlayground$renderRectangle, color, width, height, x, y, angle, s, alpha);
 		case 'Ngon':
 			var color = form.a;
 			var n = form.b;
 			var radius = form.c;
-			return A8($evancz$elm_playground$Playground$renderNgon, color, n, radius, x, y, angle, s, alpha);
+			return A8($author$project$PongPlayground$renderNgon, color, n, radius, x, y, angle, s, alpha);
 		case 'Polygon':
 			var color = form.a;
 			var points = form.b;
-			return A7($evancz$elm_playground$Playground$renderPolygon, color, points, x, y, angle, s, alpha);
+			return A7($author$project$PongPlayground$renderPolygon, color, points, x, y, angle, s, alpha);
 		case 'Image':
 			var width = form.a;
 			var height = form.b;
 			var src = form.c;
-			return A8($evancz$elm_playground$Playground$renderImage, width, height, src, x, y, angle, s, alpha);
+			return A8($author$project$PongPlayground$renderImage, width, height, src, x, y, angle, s, alpha);
 		case 'Words':
 			var color = form.a;
 			var string = form.b;
-			return A7($evancz$elm_playground$Playground$renderWords, color, string, x, y, angle, s, alpha);
+			return A7($author$project$PongPlayground$renderWords, color, string, x, y, angle, s, alpha);
 		default:
 			var shapes = form.a;
 			return A2(
@@ -6598,16 +6598,16 @@ var $evancz$elm_playground$Playground$renderShape = function (_v0) {
 				A2(
 					$elm$core$List$cons,
 					$elm$svg$Svg$Attributes$transform(
-						A4($evancz$elm_playground$Playground$renderTransform, x, y, angle, s)),
-					$evancz$elm_playground$Playground$renderAlpha(alpha)),
-				A2($elm$core$List$map, $evancz$elm_playground$Playground$renderShape, shapes));
+						A4($author$project$PongPlayground$renderTransform, x, y, angle, s)),
+					$author$project$PongPlayground$renderAlpha(alpha)),
+				A2($elm$core$List$map, $author$project$PongPlayground$renderShape, shapes));
 	}
 };
 var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
 var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
 var $elm$svg$Svg$svg = $elm$svg$Svg$trustedNode('svg');
 var $elm$svg$Svg$Attributes$viewBox = _VirtualDom_attribute('viewBox');
-var $evancz$elm_playground$Playground$render = F2(
+var $author$project$PongPlayground$render = F2(
 	function (screen, shapes) {
 		var y = $elm$core$String$fromFloat(screen.bottom);
 		var x = $elm$core$String$fromFloat(screen.left);
@@ -6624,9 +6624,9 @@ var $evancz$elm_playground$Playground$render = F2(
 					$elm$svg$Svg$Attributes$width('100%'),
 					$elm$svg$Svg$Attributes$height('100%')
 				]),
-			A2($elm$core$List$map, $evancz$elm_playground$Playground$renderShape, shapes));
+			A2($elm$core$List$map, $author$project$PongPlayground$renderShape, shapes));
 	});
-var $evancz$elm_playground$Playground$game = F3(
+var $author$project$PongPlayground$game = F3(
 	function (viewMemory, updateMemory, initialMemory) {
 		var view = function (_v3) {
 			var memory = _v3.b;
@@ -6635,7 +6635,7 @@ var $evancz$elm_playground$Playground$game = F3(
 				body: _List_fromArray(
 					[
 						A2(
-						$evancz$elm_playground$Playground$render,
+						$author$project$PongPlayground$render,
 						computer.screen,
 						A2(viewMemory, computer, memory))
 					]),
@@ -6645,21 +6645,21 @@ var $evancz$elm_playground$Playground$game = F3(
 		var update = F2(
 			function (msg, model) {
 				return _Utils_Tuple2(
-					A3($evancz$elm_playground$Playground$gameUpdate, updateMemory, msg, model),
+					A3($author$project$PongPlayground$gameUpdate, updateMemory, msg, model),
 					$elm$core$Platform$Cmd$none);
 			});
 		var subscriptions = function (_v2) {
 			var visibility = _v2.a;
 			if (visibility.$ === 'Hidden') {
-				return $elm$browser$Browser$Events$onVisibilityChange($evancz$elm_playground$Playground$VisibilityChanged);
+				return $elm$browser$Browser$Events$onVisibilityChange($author$project$PongPlayground$VisibilityChanged);
 			} else {
-				return $evancz$elm_playground$Playground$gameSubscriptions;
+				return $author$project$PongPlayground$gameSubscriptions;
 			}
 		};
 		var init = function (_v0) {
 			return _Utils_Tuple2(
-				A3($evancz$elm_playground$Playground$Game, $elm$browser$Browser$Events$Visible, initialMemory, $evancz$elm_playground$Playground$initialComputer),
-				A2($elm$core$Task$perform, $evancz$elm_playground$Playground$GotViewport, $elm$browser$Browser$Dom$getViewport));
+				A3($author$project$PongPlayground$Game, $elm$browser$Browser$Events$Visible, initialMemory, $author$project$PongPlayground$initialComputer),
+				A2($elm$core$Task$perform, $author$project$PongPlayground$GotViewport, $elm$browser$Browser$Dom$getViewport));
 		};
 		return $elm$browser$Browser$document(
 			{init: init, subscriptions: subscriptions, update: update, view: view});
@@ -6670,7 +6670,7 @@ var $author$project$Pong$initialGameState = {
 		collisionDelay: 15,
 		coords: _Utils_Tuple2(0, 0),
 		speed: _Utils_Tuple2(0, 0),
-		spinSpeed: -0.8
+		spinSpeed: -4
 	},
 	batY1: 0,
 	batY2: 0,
@@ -6744,14 +6744,14 @@ var $author$project$PongPositions$futurePositionBat1 = F4(
 	function (currentPosition, keys, top, bottom) {
 		return A2($elm$core$Set$member, 'q', keys) ? ((_Utils_cmp((currentPosition + 15) + 100, top) > 0) ? (top - 100) : (currentPosition + 15)) : (A2($elm$core$Set$member, 'w', keys) ? ((_Utils_cmp((currentPosition - 15) - 100, bottom) < 0) ? (bottom + 100) : (currentPosition - 15)) : currentPosition);
 	});
-var $evancz$elm_playground$Playground$toY = function (keyboard) {
+var $author$project$PongPlayground$toY = function (keyboard) {
 	return (keyboard.up ? 1 : 0) - (keyboard.down ? 1 : 0);
 };
 var $author$project$PongPositions$futurePositionBat2 = F4(
 	function (currentPosition, keyboard, top, bottom) {
-		var expectedTopPosition = (currentPosition + 100) + $evancz$elm_playground$Playground$toY(keyboard);
-		var expectedBottomPosition = (currentPosition - 100) + $evancz$elm_playground$Playground$toY(keyboard);
-		return (_Utils_cmp(expectedTopPosition, top) > 0) ? (top - 100) : ((_Utils_cmp(expectedBottomPosition, bottom) < 0) ? (bottom + 100) : (currentPosition + ($evancz$elm_playground$Playground$toY(keyboard) * 15)));
+		var expectedTopPosition = (currentPosition + 100) + $author$project$PongPlayground$toY(keyboard);
+		var expectedBottomPosition = (currentPosition - 100) + $author$project$PongPlayground$toY(keyboard);
+		return (_Utils_cmp(expectedTopPosition, top) > 0) ? (top - 100) : ((_Utils_cmp(expectedBottomPosition, bottom) < 0) ? (bottom + 100) : (currentPosition + ($author$project$PongPlayground$toY(keyboard) * 15)));
 	});
 var $author$project$PongTypes$Left = {$: 'Left'};
 var $author$project$PongTypes$Right = {$: 'Right'};
@@ -6812,7 +6812,8 @@ var $author$project$PongBall$updateBall = F4(
 					return _Utils_update(
 						ball,
 						{
-							speed: _Utils_Tuple2(0, 0)
+							speed: _Utils_Tuple2(0, 0),
+							spinSpeed: 0
 						});
 				} else {
 					return newBall;
@@ -6863,48 +6864,166 @@ var $author$project$Pong$update = F2(
 					{ball: newBall, batY1: newYBat1, batY2: newYBat2});
 		}
 	});
-var $evancz$elm_playground$Playground$Rgb = F3(
+var $elm$core$List$append = F2(
+	function (xs, ys) {
+		if (!ys.b) {
+			return xs;
+		} else {
+			return A3($elm$core$List$foldr, $elm$core$List$cons, ys, xs);
+		}
+	});
+var $elm$core$List$concat = function (lists) {
+	return A3($elm$core$List$foldr, $elm$core$List$append, _List_Nil, lists);
+};
+var $author$project$PongPlayground$Group = function (a) {
+	return {$: 'Group', a: a};
+};
+var $author$project$PongPlayground$Shape = F6(
+	function (a, b, c, d, e, f) {
+		return {$: 'Shape', a: a, b: b, c: c, d: d, e: e, f: f};
+	});
+var $author$project$PongPlayground$group = function (shapes) {
+	return A6(
+		$author$project$PongPlayground$Shape,
+		0,
+		0,
+		0,
+		1,
+		1,
+		$author$project$PongPlayground$Group(shapes));
+};
+var $author$project$PongPlayground$Rgb = F3(
 	function (a, b, c) {
 		return {$: 'Rgb', a: a, b: b, c: c};
 	});
-var $evancz$elm_playground$Playground$colorClamp = function (number) {
+var $author$project$PongPlayground$colorClamp = function (number) {
 	return A3(
 		$elm$core$Basics$clamp,
 		0,
 		255,
 		$elm$core$Basics$round(number));
 };
-var $evancz$elm_playground$Playground$rgb = F3(
+var $author$project$PongPlayground$rgb = F3(
 	function (r, g, b) {
 		return A3(
-			$evancz$elm_playground$Playground$Rgb,
-			$evancz$elm_playground$Playground$colorClamp(r),
-			$evancz$elm_playground$Playground$colorClamp(g),
-			$evancz$elm_playground$Playground$colorClamp(b));
+			$author$project$PongPlayground$Rgb,
+			$author$project$PongPlayground$colorClamp(r),
+			$author$project$PongPlayground$colorClamp(g),
+			$author$project$PongPlayground$colorClamp(b));
 	});
-var $author$project$PongColors$bleuClair = A3($evancz$elm_playground$Playground$rgb, 96, 181, 204);
-var $evancz$elm_playground$Playground$Polygon = F2(
+var $author$project$PongColors$orangeElm = A3($author$project$PongPlayground$rgb, 241, 173, 0);
+var $author$project$PongPlayground$Rectangle = F3(
+	function (a, b, c) {
+		return {$: 'Rectangle', a: a, b: b, c: c};
+	});
+var $author$project$PongPlayground$rectangle = F3(
+	function (color, width, height) {
+		return A6(
+			$author$project$PongPlayground$Shape,
+			0,
+			0,
+			0,
+			1,
+			1,
+			A3($author$project$PongPlayground$Rectangle, color, width, height));
+	});
+var $author$project$PongPlayground$Hex = function (a) {
+	return {$: 'Hex', a: a};
+};
+var $author$project$PongPlayground$white = $author$project$PongPlayground$Hex('#FFFFFF');
+var $author$project$PongPlayground$Words = F2(
+	function (a, b) {
+		return {$: 'Words', a: a, b: b};
+	});
+var $author$project$PongPlayground$words = F2(
+	function (color, string) {
+		return A6(
+			$author$project$PongPlayground$Shape,
+			0,
+			0,
+			0,
+			1,
+			1,
+			A2($author$project$PongPlayground$Words, color, string));
+	});
+var $author$project$PongAssets$buttonPlayerOne = $author$project$PongPlayground$group(
+	_List_fromArray(
+		[
+			A3($author$project$PongPlayground$rectangle, $author$project$PongColors$orangeElm, 90, 20),
+			A2($author$project$PongPlayground$words, $author$project$PongPlayground$white, 'P1#HUMAN')
+		]));
+var $author$project$PongPlayground$green = $author$project$PongPlayground$Hex('#73d216');
+var $author$project$PongAssets$buttonPlayerTwo = $author$project$PongPlayground$group(
+	_List_fromArray(
+		[
+			A3($author$project$PongPlayground$rectangle, $author$project$PongPlayground$green, 90, 20),
+			A2($author$project$PongPlayground$words, $author$project$PongPlayground$white, 'P2#HUMAN')
+		]));
+var $author$project$PongPlayground$moveLeft = F2(
+	function (dx, _v0) {
+		var x = _v0.a;
+		var y = _v0.b;
+		var a = _v0.c;
+		var s = _v0.d;
+		var o = _v0.e;
+		var f = _v0.f;
+		return A6($author$project$PongPlayground$Shape, x - dx, y, a, s, o, f);
+	});
+var $author$project$PongPlayground$moveX = F2(
+	function (dx, _v0) {
+		var x = _v0.a;
+		var y = _v0.b;
+		var a = _v0.c;
+		var s = _v0.d;
+		var o = _v0.e;
+		var f = _v0.f;
+		return A6($author$project$PongPlayground$Shape, x + dx, y, a, s, o, f);
+	});
+var $author$project$PongPlayground$moveRight = $author$project$PongPlayground$moveX;
+var $author$project$PongPlayground$moveY = F2(
+	function (dy, _v0) {
+		var x = _v0.a;
+		var y = _v0.b;
+		var a = _v0.c;
+		var s = _v0.d;
+		var o = _v0.e;
+		var f = _v0.f;
+		return A6($author$project$PongPlayground$Shape, x, y + dy, a, s, o, f);
+	});
+var $author$project$PongPlayground$moveUp = $author$project$PongPlayground$moveY;
+var $author$project$Pong$viewControllers = function (computer) {
+	var top = computer.screen.top - 50;
+	return _List_fromArray(
+		[
+			A2(
+			$author$project$PongPlayground$moveLeft,
+			400,
+			A2($author$project$PongPlayground$moveUp, top, $author$project$PongAssets$buttonPlayerOne)),
+			A2(
+			$author$project$PongPlayground$moveRight,
+			400,
+			A2($author$project$PongPlayground$moveUp, top, $author$project$PongAssets$buttonPlayerTwo))
+		]);
+};
+var $author$project$PongColors$bleuClair = A3($author$project$PongPlayground$rgb, 96, 181, 204);
+var $author$project$PongPlayground$Polygon = F2(
 	function (a, b) {
 		return {$: 'Polygon', a: a, b: b};
 	});
-var $evancz$elm_playground$Playground$Shape = F6(
-	function (a, b, c, d, e, f) {
-		return {$: 'Shape', a: a, b: b, c: c, d: d, e: e, f: f};
-	});
-var $evancz$elm_playground$Playground$polygon = F2(
+var $author$project$PongPlayground$polygon = F2(
 	function (color, points) {
 		return A6(
-			$evancz$elm_playground$Playground$Shape,
+			$author$project$PongPlayground$Shape,
 			0,
 			0,
 			0,
 			1,
 			1,
-			A2($evancz$elm_playground$Playground$Polygon, color, points));
+			A2($author$project$PongPlayground$Polygon, color, points));
 	});
 var $author$project$PongColors$grandTriangle = function (color) {
 	return A2(
-		$evancz$elm_playground$Playground$polygon,
+		$author$project$PongPlayground$polygon,
 		color,
 		_List_fromArray(
 			[
@@ -6913,25 +7032,8 @@ var $author$project$PongColors$grandTriangle = function (color) {
 				_Utils_Tuple2(-150, -140)
 			]));
 };
-var $evancz$elm_playground$Playground$Hex = function (a) {
-	return {$: 'Hex', a: a};
-};
-var $evancz$elm_playground$Playground$green = $evancz$elm_playground$Playground$Hex('#73d216');
-var $author$project$PongColors$grisBleu = A3($evancz$elm_playground$Playground$rgb, 89, 99, 120);
-var $evancz$elm_playground$Playground$Group = function (a) {
-	return {$: 'Group', a: a};
-};
-var $evancz$elm_playground$Playground$group = function (shapes) {
-	return A6(
-		$evancz$elm_playground$Playground$Shape,
-		0,
-		0,
-		0,
-		1,
-		1,
-		$evancz$elm_playground$Playground$Group(shapes));
-};
-var $evancz$elm_playground$Playground$moveDown = F2(
+var $author$project$PongColors$grisBleu = A3($author$project$PongPlayground$rgb, 89, 99, 120);
+var $author$project$PongPlayground$moveDown = F2(
 	function (dy, _v0) {
 		var x = _v0.a;
 		var y = _v0.b;
@@ -6939,21 +7041,10 @@ var $evancz$elm_playground$Playground$moveDown = F2(
 		var s = _v0.d;
 		var o = _v0.e;
 		var f = _v0.f;
-		return A6($evancz$elm_playground$Playground$Shape, x, y - dy, a, s, o, f);
+		return A6($author$project$PongPlayground$Shape, x, y - dy, a, s, o, f);
 	});
-var $evancz$elm_playground$Playground$moveX = F2(
-	function (dx, _v0) {
-		var x = _v0.a;
-		var y = _v0.b;
-		var a = _v0.c;
-		var s = _v0.d;
-		var o = _v0.e;
-		var f = _v0.f;
-		return A6($evancz$elm_playground$Playground$Shape, x + dx, y, a, s, o, f);
-	});
-var $evancz$elm_playground$Playground$moveRight = $evancz$elm_playground$Playground$moveX;
 var $author$project$PongColors$moyenTriangle = A2(
-	$evancz$elm_playground$Playground$polygon,
+	$author$project$PongPlayground$polygon,
 	$author$project$PongColors$bleuClair,
 	_List_fromArray(
 		[
@@ -6962,8 +7053,8 @@ var $author$project$PongColors$moyenTriangle = A2(
 			_Utils_Tuple2(20, -150)
 		]));
 var $author$project$PongColors$parallelogramme = A2(
-	$evancz$elm_playground$Playground$polygon,
-	$evancz$elm_playground$Playground$green,
+	$author$project$PongPlayground$polygon,
+	$author$project$PongPlayground$green,
 	_List_fromArray(
 		[
 			_Utils_Tuple2(65, -83),
@@ -6971,9 +7062,8 @@ var $author$project$PongColors$parallelogramme = A2(
 			_Utils_Tuple2(-140, -150),
 			_Utils_Tuple2(0, -150)
 		]));
-var $author$project$PongColors$orangeElm = A3($evancz$elm_playground$Playground$rgb, 241, 173, 0);
 var $author$project$PongColors$petitTriangle = A2(
-	$evancz$elm_playground$Playground$polygon,
+	$author$project$PongPlayground$polygon,
 	$author$project$PongColors$orangeElm,
 	_List_fromArray(
 		[
@@ -6981,7 +7071,7 @@ var $author$project$PongColors$petitTriangle = A2(
 			_Utils_Tuple2(-60, -70),
 			_Utils_Tuple2(60, -70)
 		]));
-var $evancz$elm_playground$Playground$rotate = F2(
+var $author$project$PongPlayground$rotate = F2(
 	function (da, _v0) {
 		var x = _v0.a;
 		var y = _v0.b;
@@ -6989,9 +7079,9 @@ var $evancz$elm_playground$Playground$rotate = F2(
 		var s = _v0.d;
 		var o = _v0.e;
 		var f = _v0.f;
-		return A6($evancz$elm_playground$Playground$Shape, x, y, a + da, s, o, f);
+		return A6($author$project$PongPlayground$Shape, x, y, a + da, s, o, f);
 	});
-var $evancz$elm_playground$Playground$scale = F2(
+var $author$project$PongPlayground$scale = F2(
 	function (ns, _v0) {
 		var x = _v0.a;
 		var y = _v0.b;
@@ -6999,145 +7089,113 @@ var $evancz$elm_playground$Playground$scale = F2(
 		var s = _v0.d;
 		var o = _v0.e;
 		var f = _v0.f;
-		return A6($evancz$elm_playground$Playground$Shape, x, y, a, s * ns, o, f);
+		return A6($author$project$PongPlayground$Shape, x, y, a, s * ns, o, f);
 	});
-var $evancz$elm_playground$Playground$Rectangle = F3(
-	function (a, b, c) {
-		return {$: 'Rectangle', a: a, b: b, c: c};
-	});
-var $evancz$elm_playground$Playground$square = F2(
+var $author$project$PongPlayground$square = F2(
 	function (color, n) {
 		return A6(
-			$evancz$elm_playground$Playground$Shape,
+			$author$project$PongPlayground$Shape,
 			0,
 			0,
 			0,
 			1,
 			1,
-			A3($evancz$elm_playground$Playground$Rectangle, color, n, n));
+			A3($author$project$PongPlayground$Rectangle, color, n, n));
 	});
 var $author$project$PongAssets$ball = A2(
-	$evancz$elm_playground$Playground$scale,
+	$author$project$PongPlayground$scale,
 	0.08,
-	$evancz$elm_playground$Playground$group(
+	$author$project$PongPlayground$group(
 		_List_fromArray(
 			[
 				A2(
-				$evancz$elm_playground$Playground$moveRight,
+				$author$project$PongPlayground$moveRight,
 				78,
 				A2(
-					$evancz$elm_playground$Playground$rotate,
+					$author$project$PongPlayground$rotate,
 					45,
-					A2($evancz$elm_playground$Playground$square, $evancz$elm_playground$Playground$green, 99))),
+					A2($author$project$PongPlayground$square, $author$project$PongPlayground$green, 99))),
 				$author$project$PongColors$grandTriangle($author$project$PongColors$grisBleu),
 				A2(
-				$evancz$elm_playground$Playground$rotate,
+				$author$project$PongPlayground$rotate,
 				90,
 				$author$project$PongColors$grandTriangle($author$project$PongColors$bleuClair)),
 				$author$project$PongColors$moyenTriangle,
 				$author$project$PongColors$petitTriangle,
 				A2(
-				$evancz$elm_playground$Playground$moveRight,
+				$author$project$PongPlayground$moveRight,
 				80,
 				A2(
-					$evancz$elm_playground$Playground$moveDown,
+					$author$project$PongPlayground$moveDown,
 					80,
-					A2($evancz$elm_playground$Playground$rotate, 270, $author$project$PongColors$petitTriangle))),
+					A2($author$project$PongPlayground$rotate, 270, $author$project$PongColors$petitTriangle))),
 				$author$project$PongColors$parallelogramme
 			])));
-var $evancz$elm_playground$Playground$rectangle = F3(
-	function (color, width, height) {
-		return A6(
-			$evancz$elm_playground$Playground$Shape,
-			0,
-			0,
-			0,
-			1,
-			1,
-			A3($evancz$elm_playground$Playground$Rectangle, color, width, height));
-	});
 var $author$project$PongAssets$bat = function (color) {
-	return A3($evancz$elm_playground$Playground$rectangle, color, 15, 200);
+	return A3($author$project$PongPlayground$rectangle, color, 15, 200);
 };
-var $evancz$elm_playground$Playground$moveY = F2(
-	function (dy, _v0) {
-		var x = _v0.a;
-		var y = _v0.b;
-		var a = _v0.c;
-		var s = _v0.d;
-		var o = _v0.e;
-		var f = _v0.f;
-		return A6($evancz$elm_playground$Playground$Shape, x, y + dy, a, s, o, f);
-	});
-var $evancz$elm_playground$Playground$moveUp = $evancz$elm_playground$Playground$moveY;
 var $elm$core$Basics$modBy = _Basics_modBy;
 var $elm$time$Time$posixToMillis = function (_v0) {
 	var millis = _v0.a;
 	return millis;
 };
-var $evancz$elm_playground$Playground$toFrac = F2(
+var $author$project$PongPlayground$toFrac = F2(
 	function (period, _v0) {
 		var posix = _v0.a;
 		var p = period * 1000;
 		var ms = $elm$time$Time$posixToMillis(posix);
-		return A2(
+		return (!p) ? 0 : (A2(
 			$elm$core$Basics$modBy,
 			$elm$core$Basics$round(p),
-			ms) / p;
+			ms) / p);
 	});
-var $evancz$elm_playground$Playground$spin = F2(
-	function (period, time) {
-		return 360 * A2($evancz$elm_playground$Playground$toFrac, period, time);
+var $author$project$PongPlayground$spin = F2(
+	function (frequency, time) {
+		return (!frequency) ? 0 : (360 * A2($author$project$PongPlayground$toFrac, 1 / frequency, time));
 	});
-var $evancz$elm_playground$Playground$Words = F2(
-	function (a, b) {
-		return {$: 'Words', a: a, b: b};
-	});
-var $evancz$elm_playground$Playground$words = F2(
-	function (color, string) {
-		return A6(
-			$evancz$elm_playground$Playground$Shape,
-			0,
-			0,
-			0,
-			1,
-			1,
-			A2($evancz$elm_playground$Playground$Words, color, string));
-	});
-var $author$project$Pong$view = F2(
+var $author$project$Pong$viewGame = F2(
 	function (computer, gameState) {
 		return _List_fromArray(
 			[
 				A2(
-				$evancz$elm_playground$Playground$moveY,
+				$author$project$PongPlayground$moveY,
 				gameState.batY1,
 				A2(
-					$evancz$elm_playground$Playground$moveX,
+					$author$project$PongPlayground$moveX,
 					computer.screen.left + 50,
 					$author$project$PongAssets$bat($author$project$PongColors$orangeElm))),
 				A2(
-				$evancz$elm_playground$Playground$moveY,
+				$author$project$PongPlayground$moveY,
 				gameState.batY2,
 				A2(
-					$evancz$elm_playground$Playground$moveRight,
+					$author$project$PongPlayground$moveRight,
 					computer.screen.right - 50,
-					$author$project$PongAssets$bat($evancz$elm_playground$Playground$green))),
+					$author$project$PongAssets$bat($author$project$PongPlayground$green))),
 				A2(
-				$evancz$elm_playground$Playground$rotate,
-				A2($evancz$elm_playground$Playground$spin, gameState.ball.spinSpeed, computer.time),
+				$author$project$PongPlayground$rotate,
+				A2($author$project$PongPlayground$spin, gameState.ball.spinSpeed, computer.time),
 				A2(
-					$evancz$elm_playground$Playground$moveY,
+					$author$project$PongPlayground$moveY,
 					gameState.ball.coords.b,
-					A2($evancz$elm_playground$Playground$moveX, gameState.ball.coords.a, $author$project$PongAssets$ball))),
+					A2($author$project$PongPlayground$moveX, gameState.ball.coords.a, $author$project$PongAssets$ball))),
 				A2(
-				$evancz$elm_playground$Playground$moveUp,
+				$author$project$PongPlayground$moveUp,
 				computer.screen.top - 50,
 				A2(
-					$evancz$elm_playground$Playground$scale,
+					$author$project$PongPlayground$scale,
 					3,
-					A2($evancz$elm_playground$Playground$words, $author$project$PongColors$orangeElm, 'PONG = ELM GAME')))
+					A2($author$project$PongPlayground$words, $author$project$PongColors$orangeElm, 'PONG = ELM GAME')))
 			]);
 	});
-var $author$project$Pong$main = A3($evancz$elm_playground$Playground$game, $author$project$Pong$view, $author$project$Pong$update, $author$project$Pong$initialGameState);
+var $author$project$Pong$view = F2(
+	function (computer, gameState) {
+		return $elm$core$List$concat(
+			_List_fromArray(
+				[
+					$author$project$Pong$viewControllers(computer),
+					A2($author$project$Pong$viewGame, computer, gameState)
+				]));
+	});
+var $author$project$Pong$main = A3($author$project$PongPlayground$game, $author$project$Pong$view, $author$project$Pong$update, $author$project$Pong$initialGameState);
 _Platform_export({'Pong':{'init':$author$project$Pong$main(
 	$elm$json$Json$Decode$succeed(_Utils_Tuple0))(0)}});}(this));

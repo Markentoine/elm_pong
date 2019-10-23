@@ -1,11 +1,12 @@
 module Pong exposing (..)
 
 import Html exposing (..)
-import Playground exposing (..)
+import Html.Events exposing (onClick)
 import PongAssets exposing (..)
 import PongBall exposing (..)
 import PongColors exposing (..)
 import PongHandleCollisions exposing (..)
+import PongPlayground exposing (..)
 import PongPositions exposing (..)
 import PongTypes exposing (..)
 import Set
@@ -24,7 +25,29 @@ main =
 -- VIEW
 
 
+view : Computer -> GameState -> List Shape
 view computer gameState =
+    List.concat
+        [ viewControllers computer
+        , viewGame computer gameState
+        ]
+
+
+viewControllers computer =
+    let
+        top =
+            computer.screen.top - 50
+    in
+    [ buttonPlayerOne
+        |> moveUp top
+        |> moveLeft 400
+    , buttonPlayerTwo
+        |> moveUp top
+        |> moveRight 400
+    ]
+
+
+viewGame computer gameState =
     [ bat orangeElm
         |> moveX (computer.screen.left + 50)
         |> moveY gameState.batY1
@@ -108,7 +131,7 @@ initialGameState =
         { coords = ( 0, 0 )
         , speed = ( 0, 0 )
         , collisionDelay = 15
-        , spinSpeed = -0.8
+        , spinSpeed = -4
         }
     }
 

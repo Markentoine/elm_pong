@@ -1,7 +1,7 @@
 module PongAssets exposing (..)
 
-import Playground exposing (..)
 import PongColors exposing (..)
+import PongPlayground exposing (..)
 
 
 bat : Color -> Shape
@@ -27,3 +27,17 @@ ball =
         , parallelogramme
         ]
         |> scale 0.08
+
+
+buttonPlayerOne =
+    group
+        [ rectangle orangeElm 90 20
+        , words white "P1#HUMAN"
+        ]
+
+
+buttonPlayerTwo =
+    group
+        [ rectangle green 90 20
+        , words white "P2#HUMAN"
+        ]
